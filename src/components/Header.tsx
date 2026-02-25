@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const navLinks = [
@@ -14,7 +15,27 @@ const navLinks = [
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(href + "/");
+  };
+
+  const linkClass = (href: string) =>
+    `text-sm font-medium transition ${
+      isActive(href)
+        ? "text-brand-sky font-semibold border-b-2 border-brand-sky pb-0.5"
+        : "text-gray-700 hover:text-brand-sky"
+    }`;
+
+  const mobileLinkClass = (href: string) =>
+    `block rounded-lg px-3 py-2 transition ${
+      isActive(href)
+        ? "bg-brand-sky/10 text-brand-sky font-semibold"
+        : "text-gray-700 hover:bg-gray-100 hover:text-brand-sky"
+    }`;
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 shadow-sm backdrop-blur">
@@ -30,7 +51,8 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-gray-700 transition hover:text-brand-sky"
+              className={linkClass(link.href)}
+              aria-current={isActive(link.href) ? "page" : undefined}
             >
               {link.label}
             </Link>
@@ -63,8 +85,9 @@ export function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-sky"
+                  className={mobileLinkClass(link.href)}
                   onClick={() => setMobileOpen(false)}
+                  aria-current={isActive(link.href) ? "page" : undefined}
                 >
                   {link.label}
                 </Link>
