@@ -41,8 +41,8 @@ export const trustpilotConfig = {
     width: trustpilotMicroButtonEmbed.width,
     minContainerHeight: "56px",
     scaleClass: "trustpilot-widget-scale",
-    homeAlignment: "left",
-    reviewsAlignment: "center",
+    homeAlignment: "left" as const,
+    reviewsAlignment: "center" as const,
   },
 };
 
