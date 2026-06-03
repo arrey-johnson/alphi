@@ -26,6 +26,39 @@ body {
   .section-subheading {
     @apply mt-4 text-lg text-gray-600;
   }
+
+  /* Trustpilot TrustBox — enlarged Micro Review Count / button */
+  .trustpilot-widget--prominent {
+    @apply w-full;
+  }
+
+  .trustpilot-widget-scale {
+    @apply inline-block origin-left;
+    transform: scale(1.65);
+  }
+
+  @media (min-width: 640px) {
+    .trustpilot-widget-scale {
+      transform: scale(1.9);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .trustpilot-widget-scale {
+      transform: scale(2.1);
+    }
+  }
+
+  .trustpilot-widget-scale--center {
+    @apply mx-auto block origin-center;
+  }
+
+  .trustpilot-widget--prominent iframe {
+    min-height: 48px !important;
+    height: 48px !important;
+    width: 100% !important;
+    max-width: 480px;
+  }
 }
 
 @keyframes float-bubble {

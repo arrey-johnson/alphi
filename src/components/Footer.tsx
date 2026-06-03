@@ -1,5 +1,9 @@
 import Link from "next/link";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
+import {
+  isTrustpilotProfileLinkConfigured,
+  trustpilotConfig,
+} from "@/data/trustpilot";
 
 const footerLinks = {
   company: [
@@ -17,10 +21,23 @@ const footerLinks = {
   ],
 };
 
-const socialLinks = [
+const baseSocialLinks = [
   { href: "https://www.instagram.com/alphysservices", label: "Instagram", icon: "instagram" },
   { href: "https://www.facebook.com/alphysservicesltd", label: "Facebook", icon: "facebook" },
   { href: "https://share.google/nAQK3t3ucsNqiZdbX", label: "Google Business", icon: "google" },
+];
+
+const socialLinks = [
+  ...baseSocialLinks,
+  ...(isTrustpilotProfileLinkConfigured
+    ? [
+        {
+          href: trustpilotConfig.profileUrl,
+          label: "Trustpilot",
+          icon: "trustpilot",
+        },
+      ]
+    : []),
 ];
 
 /** Soap foam bubbles – positions and sizes for floating effect */
@@ -57,6 +74,13 @@ function SocialIcon({ icon }: { icon: string }) {
     return (
       <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden>
         <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.827-2.827C16.343 1.117 14.22 0 12.48 0 5.867 0 .307 5.583.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.085-1.334-.165-1.92H12.48z" />
+      </svg>
+    );
+  }
+  if (icon === "trustpilot") {
+    return (
+      <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path d="M12 2l2.09 6.26L20.18 9.27l-5.09 3.7 1.94 6.03L12 15.77l-5.03 3.23 1.94-6.03-5.09-3.7 6.09-1.01L12 2z" />
       </svg>
     );
   }

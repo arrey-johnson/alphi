@@ -5,10 +5,9 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { heroSlides } from "@/data/heroSlides";
 import { mainServices } from "@/data/mainServices";
-import { reviews } from "@/data/reviews";
+import { TrustpilotSection } from "@/components/TrustpilotSection";
 import { faqs } from "@/data/faqs";
 
-const HOME_REVIEWS_COUNT = 3;
 const HOME_FAQS_COUNT = 4;
 
 const whyChoose = [
@@ -246,58 +245,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Reviews preview */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-amber-50/50 to-white py-20 sm:py-28">
-        <div className="absolute left-0 top-1/2 h-[400px] w-[400px] -translate-y-1/2 -translate-x-1/4 rounded-full bg-amber-200/20 blur-3xl" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <span className="inline-block rounded-full border border-amber-300/50 bg-amber-100 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-amber-800">
-              Testimonials
-            </span>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              What our customers say
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-              Real feedback from people who trust us with their homes and offices.
-            </p>
-          </div>
-          <div className="mt-14 grid gap-10 lg:grid-cols-5 lg:items-center lg:gap-14">
-            <div className="lg:col-span-2">
-              <div className="relative">
-                <div className="absolute -inset-3 rounded-2xl bg-amber-100/50 blur-xl" aria-hidden />
-                <SectionImage
-                  src="/home/people-taking-care-office-cleaning.jpg"
-                  alt="Happy customer - Alphy's Services Ltd"
-                  className="relative rounded-2xl ring-4 ring-white shadow-xl"
-                  aspectRatio="portrait"
-                />
-              </div>
-            </div>
-            <div className="space-y-6 lg:col-span-3">
-              {reviews.slice(0, HOME_REVIEWS_COUNT).map((review, i) => (
-                <blockquote
-                  key={i}
-                  className="rounded-2xl border border-gray-200/80 bg-white p-6 shadow-md transition hover:shadow-lg"
-                >
-                  <p className="text-gray-700">&ldquo;{review.text}&rdquo;</p>
-                  <footer className="mt-4 font-semibold text-brand-sky">— {review.name}</footer>
-                </blockquote>
-              ))}
-              <div className="pt-2">
-                <Link
-                  href="/reviews"
-                  className="inline-flex items-center gap-2 rounded-xl bg-amber-100 px-5 py-2.5 font-semibold text-amber-800 transition hover:bg-amber-200"
-                >
-                  Read all reviews
-                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TrustpilotSection variant="home" />
 
       {/* FAQ preview */}
       <section className="bg-white py-20 sm:py-28">

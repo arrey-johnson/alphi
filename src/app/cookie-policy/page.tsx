@@ -55,6 +55,19 @@ export default function CookiePolicyPage() {
               page views, traffic). We may use services that set such cookies; we will only do so in
               line with our Privacy Policy and your preferences where required.
             </li>
+            <li>
+              <strong>Third-party widgets:</strong> Our Trustpilot review widgets may set cookies
+              when they load. See{" "}
+              <a
+                href="https://legal.trustpilot.com/for-reviewers/end-user-privacy-terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-sky hover:underline"
+              >
+                Trustpilot&apos;s privacy terms
+              </a>
+              .
+            </li>
           </ul>
         </section>
 
